@@ -17,8 +17,9 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
       </p>
       <h1 className="font-display text-3xl">{study.title}</h1>
       <p className="mt-2 max-w-xl text-sm text-muted">
-        800–1,200 words target, six sections, per the plan's case study
-        template. Placeholder copy below — not final.
+        {study.status === "written"
+          ? "Screens still to come — flagged where they're missing below."
+          : "Placeholder copy below — not yet written."}
       </p>
 
       <div className="mt-12 flex flex-col gap-10">
@@ -27,8 +28,17 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <p className="mb-2 text-xs font-bold uppercase tracking-widest text-muted">
               {i + 1} — {section.heading}
             </p>
-            {i === 3 ? (
-              <div className="grid grid-cols-3 gap-4">
+            {study.status === "written" ? (
+              <div className="whitespace-pre-line text-sm leading-relaxed text-ink">
+                {section.body}
+              </div>
+            ) : (
+              <div className="rounded border border-dashed border-muted/50 p-4 text-sm text-muted">
+                {section.body}
+              </div>
+            )}
+            {i === 3 && (
+              <div className="mt-4 grid grid-cols-3 gap-4">
                 {[0, 1, 2].map((n) => (
                   <div
                     key={n}
@@ -38,8 +48,9 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                   </div>
                 ))}
               </div>
-            ) : i === 4 && study.stats.length > 0 ? (
-              <div className="grid grid-cols-3 gap-4">
+            )}
+            {i === 4 && study.stats.length > 0 && (
+              <div className="mt-4 grid grid-cols-3 gap-4">
                 {study.stats.map((stat) => (
                   <div
                     key={stat.label}
@@ -49,10 +60,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                     <div className="text-xs text-muted">{stat.label}</div>
                   </div>
                 ))}
-              </div>
-            ) : (
-              <div className="rounded border border-dashed border-muted/50 p-4 text-sm text-muted">
-                {section.body}
               </div>
             )}
           </div>
