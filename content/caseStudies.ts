@@ -23,7 +23,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "docintel",
     title: "Docintel / Risk Summariser",
-    dek: "3 hrs → 15 min per document. 80 hrs saved per underwriter / year. Built with a CTA expert from Bath.",
+    dek: "3 hrs → 15 min per document, measured in Datadog. ~80 of 87 hours a year saved per energy underwriter.",
     status: "written", // page is live; the copy inside it is still placeholder (see sections below)
     priority: 1,
     stats: [
@@ -34,15 +34,15 @@ export const caseStudies: CaseStudy[] = [
     sections: [
       {
         heading: "Context",
-        body: "Underwriters at Convex spent an average of 87 hours a year each reading engineering surveyor reports — the documents that actually describe the risk they were pricing — one email attachment at a time, with no triage and no record of what had been read before a quote went out. The bottleneck wasn't underwriting judgement; it was getting a dense technical document in front of the right judgement at all. And the real customer of that delay wasn't the underwriter — it was the broker on the other end, waiting on a quote that couldn't move until someone had read the report.",
+        body: "At Convex, energy underwriters were reading around 1,300 engineering reports a year between a team of 15 — about 87 hours each, every year, or 3.6 working days, just reading the documents that told them what they were actually insuring. You can't price a risk without that reading — it's like buying a car without checking it over first — but the bottleneck wasn't the underwriters' judgement. It was getting a judgement-ready signal in front of them at all, inside a dense PDF, one email attachment at a time. And the real customer of that delay wasn't the underwriter — it was the broker on the other end, waiting on a quote that couldn't move until someone had read the report.",
       },
       {
         heading: "Where the judgement actually lived",
-        body: "Cognitive Decision Making interviews with underwriters — run with a Cognitive Task Analysis specialist brought in from the University of Bath, rather than attempting the method casually — surfaced which parts of a report actually drove an accept, decline or price decision, as distinct from the parts that simply took longest to read. That gap, between what's actually read and what's actually decisive, is what the automated extraction had to reproduce, not just a faster version of reading everything. Having learned the method properly, I taught it on to my own team and the business analysts afterwards, so the practice outlived this one project.",
+        body: "Most AI projects in underwriting start by asking \"where can we apply AI?\" to the data and the model. We inverted that and asked \"where are the hardest decisions?\" instead — through Cognitive Task Analysis interviews with underwriters, run properly with a specialist brought in from the University of Bath rather than attempting the method casually. What came back wasn't one field worth extracting: underwriting judgement draws on the engineering report alongside broker conversations, loss history and market context together, and turns that mix into a decision through reasoning that's mostly tacit — hard to see, let alone automate. The part actually worth building wasn't \"summarise the document\"; it was surfacing the handful of signals inside it that a real judgement turns on, which is a narrower and harder target. Having learned to find that distinction properly, I taught the method on to my own team and the business analysts afterwards, so it outlived this one project.",
       },
       {
         heading: "The decision I made",
-        body: "Rather than route the AI's extraction straight to the underwriter, I designed a second user into the workflow: a \"unicorn\" — a subject-matter expert for each line of business — who reviews and corrects the model's output before an underwriter ever sees it, with every correction logged and fed back in. The underwriter is only pinged in Slack once a report has cleared that review.\n\nThe alternative was cheaper to build and worse to run: sending AI output straight to underwriters and asking them to self-check it would have \"saved\" the same reading hours on paper, while quietly reintroducing the original risk — underwriters trusting an extraction because checking it properly takes the same discipline reading it did, with nothing to catch the moment they don't. Adding a reviewer cost one extra role and one extra step, per line of business, to buy a system where the AI's accuracy was actually being verified, not just assumed.",
+        body: "Risk summarisation doesn't have an easy ground truth the way news summarisation does — what counts as a \"correct\" extraction is itself a judgement call, and getting that wrong anywhere in the pipeline would have cost trust fast. So rather than route the model's output straight to the underwriter, I designed a second user into the workflow: a \"unicorn\" — a subject-matter expert for each line of business — who reviews and corrects the extraction before an underwriter ever sees it, with every correction logged and fed back in. The underwriter is only pinged in Slack once a report has cleared that review.\n\nThe alternative was cheaper to build and worse to run: send the AI's output straight to underwriters and ask them to self-check it. That \"saves\" the same reading hours on paper, while quietly reintroducing the original risk under a different name — underwriters trusting an extraction because checking it properly takes the same discipline reading it did, with nothing in the workflow to catch the moment they don't. Adding a reviewer cost one extra role and one extra step per line of business, to buy a system where the AI surfaces the insight and a person still makes the call, rather than the reverse.",
       },
       {
         heading: "What shipped",
@@ -50,7 +50,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         heading: "Outcome",
-        body: "Before the service, underwriters spent an average of 87 hours a year each just reading these reports. The service now saves 80 of those hours a year, per underwriter — the remaining time sits with the unicorn review, by design, not as a gap the system failed to close. Per-document review time dropped from roughly 3 hours to 15 minutes, and the proportion of report insight actually reviewed, rather than skimmed or skipped under time pressure, rose 90%. The work was a 2026 National AI Awards finalist.",
+        body: "Before the service, energy underwriters were each spending around 87 hours a year — 3.6 working days — reading engineering reports. Automating the extraction cut per-document review time from about 3 hours to 15 minutes — measured against real session timings in Datadog, not estimated — which works out to roughly 80 of those 87 hours saved annually, per underwriter; the rest sits with the unicorn review, by design, not as a gap the system failed to close. Reviewed-insight coverage rose 90%. The work was a 2026 National AI Awards finalist.",
       },
       {
         heading: "What I'd do differently",
