@@ -21,8 +21,8 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "docintel",
-    title: "Docintel / Risk Summariser",
+    slug: "insight-analysis-app",
+    title: "Insight Analysis App",
     dek: "3 hrs → 15 min per document, measured in Datadog. ~80 of 87 hours a year saved per energy underwriter.",
     status: "written", // page is live; the copy inside it is still placeholder (see sections below)
     priority: 1,
@@ -46,7 +46,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         heading: "What shipped",
-        body: "The service watches a shared inbox for incoming surveyor reports, extracts and summarises each one, routes the summary to the unicorn reviewer for sign-off, pushes the cleared version into Launchpad, and notifies the underwriter by Slack the moment it's ready. A later iteration layered in online news sources for a fuller risk picture, and pulled structured third-party data — S&P filings, for instance — to flag where a client's own submission didn't match. [ screens: pending a confidentiality check against Convex's IP before publishing ]",
+        body: "The service watches a shared inbox for incoming surveyor reports, extracts and summarises each one, routes the summary to the unicorn reviewer for sign-off, pushes the cleared version into Launchpad, and notifies the underwriter by Slack the moment it's ready. Every extraction kept its source — underwriters could drill from the summary back into the original document rather than take it on faith. That mattered more than expected: once underwriters trusted the standalone service enough, we folded it directly into Launchpad, and usage of the standalone tool dropped off on its own as people simply stopped needing to leave the workbench. A later iteration layered in online news sources for a fuller risk picture, and pulled structured third-party data — S&P filings, for instance — to flag where a client's own submission didn't match. [ screens: pending a confidentiality check against Convex's IP before publishing ]",
       },
       {
         heading: "Outcome",
@@ -61,17 +61,38 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "launchpad",
     title: "Launchpad underwriting workbench",
-    dek: "Broker-as-customer reframe, co-creation and adoption story.",
-    status: "placeholder",
+    dek: "One workbench replacing five separate tools. ~100 underwriters a day.",
+    status: "written",
     priority: 2,
-    stats: [],
+    stats: [
+      { value: "5 → 1", label: "tools replaced by one workbench" },
+      { value: "~100", label: "underwriters using it daily" },
+    ],
     sections: [
-      { heading: "Context", body: "[ not yet written ]" },
-      { heading: "Where the judgement actually lived", body: "[ not yet written ]" },
-      { heading: "The decision I made", body: "[ not yet written ]" },
-      { heading: "What shipped", body: "[ not yet written ]" },
-      { heading: "Outcome", body: "[ not yet written ]" },
-      { heading: "What I'd do differently", body: "[ not yet written ]" },
+      {
+        heading: "Context",
+        body: "Underwriters at Convex worked across five separate applications just to do their daily job — switching between them to piece together a submission's full picture before they could make a call. That fragmentation didn't only cost the underwriter time: it was the broker on the other end who felt it, waiting longer for a quote while the underwriter assembled the picture app by app.",
+      },
+      {
+        heading: "Where the judgement actually lived",
+        body: "A service blueprint of the underwriting journey, mapped with the Head of Product, showed the friction wasn't any one tool being bad — it was the switching between them breaking the one judgement call that mattered most: deciding fast whether a submission was worth deeper investment before reading it in full. Experienced underwriters made that call by checking how a submission benchmarked against comparable risks first; a less experienced underwriter worked the submission top to bottom and reached the same answer much later. That's the decision point the workbench needed to support directly, not bury behind a fifth login.",
+      },
+      {
+        heading: "The decision I made",
+        body: "The easier path was to integrate the five existing tools better — quicker to ship, and the path of least resistance for underwriters who already knew those interfaces. Instead, with the Head of Product, I set the UX vision around one new workbench built for the broker's turnaround time, not underwriter familiarity. That traded a harder migration — underwriters relearning a workflow mid-project — for a single information hierarchy built around the sequence that actually mattered: benchmark position first, full submission detail second, rather than five screens each optimised for its own job and none optimised for the decision underwriters were actually making.",
+      },
+      {
+        heading: "What shipped",
+        body: "Launchpad shipped as three core views: Benchmarking, so an underwriter can triage a submission against comparable risks at a glance before going deeper; Sub-Detail, the full submission view for risks worth the time; and Summary, which strips the workflow down to a clear information hierarchy instead of a dump of every field. [ screens: pending a confidentiality check against Convex's IP before publishing ]",
+      },
+      {
+        heading: "Outcome",
+        body: "Launchpad replaced five separate tools with one, and is used by around 100 underwriters a day. Co-creation sessions and design thinking workshops with underwriters drove adoption and shaped specific feature and interface changes that created real workflow efficiencies. Bringing the engineering lead into those same workshops, with weekly catchups to review the design process, kept engineering effort pointed at what underwriters actually needed rather than rebuilt after the fact.",
+      },
+      {
+        heading: "What I'd do differently",
+        body: "Benchmarking made the \"is this worth deeper investment\" call fast. The harder goal behind the project — getting underwriters thinking at a portfolio level, not just submission by submission — landed less completely; an interface can make one decision easy without changing the frame someone brings to the next one. I'd push further on that second goal specifically if I did this again.",
+      },
     ],
   },
   {

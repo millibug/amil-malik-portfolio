@@ -12,7 +12,7 @@ touching any page component.
 - Wordmark / brand: `components/Wordmark.tsx`
 - Pages: Home, Work, one dynamic case-study route (`/work/[slug]`), Method
   (with a working "why that, not this" drill), About
-- `docintel` is the only case study marked `status: "written"` — real copy
+- `insight-analysis-app` is the only case study marked `status: "written"` — real copy
   is in, pending real screens and a couple of confirmable specifics (see
   content/caseStudies.ts) — the other three stay unlinked until written
 
